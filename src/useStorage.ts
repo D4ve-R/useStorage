@@ -1,9 +1,9 @@
 interface StoreObject {
-    [key: string]: string|number|boolean|StoreObject|StoreArray;
+    [key: string]: string | number | boolean | StoreObject | StoreArray;
 }
 
 interface StoreArray {
-    [index: number]: string|number|boolean|StoreObject|StoreArray;
+    [index: number]: string | number | boolean | StoreObject | StoreArray;
 }
 
 /**
@@ -14,18 +14,18 @@ interface StoreArray {
  */
 export function getItem(key: string) {
     let value = window.localStorage.getItem(key);
-    if(value == null) { 
+    if (value == null) {
         console.warn(`${key} not found in localStorage`);
         return value;
     }
-    if(value === 'true') return true;
-    if(value === 'false') return false;
-    if(!isNaN(+value)) return +value;
+    if (value === 'true') return true;
+    if (value === 'false') return false;
+    if (!isNaN(+value)) return +value;
 
     try {
         const val = JSON.parse(value);
         value = val;
-    } catch(error) {
+    } catch (error) {
         // item is not a json string
     } finally {
         return value;
@@ -39,13 +39,12 @@ export function getItem(key: string) {
  * @param {(string|number|boolean|Array|Object)} value - value to write to localStorage
  * @returns {void}
  */
-export function setItem(key: string, value: string|number|boolean|StoreArray|StoreObject){
+export function setItem(key: string, value: string | number | boolean | StoreArray | StoreObject) {
     let val: any = '';
 
-    if(typeof value === 'string'|| typeof value === 'number' || typeof value === 'boolean') {
+    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
         val = value;
-    }
-    else {
+    } else {
         val = JSON.stringify(value);
     }
 
@@ -61,12 +60,12 @@ export function setItem(key: string, value: string|number|boolean|StoreArray|Sto
  *
  * @returns {void}
  */
-function _setItem(key: string, value: string|number|boolean|StoreArray|StoreObject) {
+function _setItem(key: string, value: string | number | boolean | StoreArray | StoreObject) {
     'use strict';
 
     setItem(key, value);
-    
-    if(!this.hasOwnProperty(key))
+
+    if (!this.hasOwnProperty(key))
         Object.defineProperty(this, key, {
             get: () => getItem(key),
             set: (val) => setItem(key, val),
@@ -83,24 +82,21 @@ function _setItem(key: string, value: string|number|boolean|StoreArray|StoreObje
 function _clear() {
     'use strict';
 
-    for(const key in this)
-    {
-        if(key === 'get' || key === 'set' || key === 'remove' || key === 'clear' || key === 'clearAll')
-            continue;
-        
+    for (const key in this) {
+        if (key === 'get' || key === 'set' || key === 'remove' || key === 'clear' || key === 'clearAll') continue;
+
         delete this[key];
         window.localStorage.removeItem(key);
     }
 }
-    
+
 /**
  * wrapper for localStorage
  */
 export default {
-        set: _setItem,
-        get: getItem,
-        remove: window.localStorage.removeItem,
-        clear: _clear,
-        clearAll: window.localStorage.clear,
+    set: _setItem,
+    get: getItem,
+    remove: window.localStorage.removeItem,
+    clear: _clear,
+    clearAll: window.localStorage.clear,
 };
-
