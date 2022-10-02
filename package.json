@@ -2,8 +2,8 @@
   "name": "usestorage",
   "version": "1.0.0",
   "description": "localStorage hook",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "build/useStorage.js",
+  "types": "build/useStorage.d.ts",
   "scripts": {
     "test": "python -m http.server",
     "build": "tsc",

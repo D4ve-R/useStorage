@@ -13,7 +13,6 @@ interface StoreArray {
  * @returns {(null|string|number|boolean|Array|Object)} typecasted object from localStorage or null
  */
 export function getItem(key: string) {
-    /* eslint-disable no-console*/
     let value = window.localStorage.getItem(key);
     if(value == null) { 
         console.warn(`${key} not found in localStorage`);
@@ -29,7 +28,7 @@ export function getItem(key: string) {
     } catch(error) {
         // item is not a json string
     } finally {
-        return value;   // eslint-disable-line
+        return value;
     }
 }
 
