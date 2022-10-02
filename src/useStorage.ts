@@ -67,7 +67,7 @@ function _setItem(key: string, value: string|number|boolean|StoreArray|StoreObje
 
     setItem(key, value);
     
-    if(!this.hasOwn(key))
+    if(!this.hasOwnProperty(key))
         Object.defineProperty(this, key, {
             get: () => getItem(key),
             set: (val) => setItem(key, val),
@@ -98,10 +98,10 @@ function _clear() {
  * wrapper for localStorage
  */
 export default {
-    set: _setItem,
-    get: getItem,
-    remove: window.localStorage.removeItem,
-    clear: _clear,
-    clearAll: window.localStorage.clear,
-}
+        set: _setItem,
+        get: getItem,
+        remove: window.localStorage.removeItem,
+        clear: _clear,
+        clearAll: window.localStorage.clear,
+};
 

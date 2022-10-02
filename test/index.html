@@ -2,22 +2,23 @@
 <head>
     <meta charset="utf-8">
     <title>Mocha Tests</title>
-    <link href="https://unpkg.com/mocha@4.0.1/mocha.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/mocha/mocha.css" rel="stylesheet" />
 </head>
 <body>
 <div id="mocha"></div>
 
-<script src="https://unpkg.com/chai@4.3.6/chai.js"></script>
-<script src="https://unpkg.com/mocha@10.0.0/mocha.js"></script>
+<script src="https://unpkg.com/chai/chai.js"></script>
+<script src="https://unpkg.com/mocha/mocha.js"></script>
 
-<script type="module">
+<script type="module" class="mocha-init">
     mocha.setup('bdd');
+    mocha.checkLeaks();
 </script>
 
 <script type="module" src="useStorage.test.js"></script>
 
-<script type="module">
-    mocha.checkLeaks();
+<script type="module" class="mocha-exec">
     mocha.run();
 </script>
 </body>
