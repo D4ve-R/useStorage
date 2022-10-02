@@ -23,6 +23,7 @@ describe('store object', function () {
       store.storeTest = 2;
       chai.expect(store.storeTest).to.equal(2);
       store.clear();
+      chai.expect(store).to.have.property('get');
       chai.expect(store).to.not.have.property('storeTest');
   });
 });

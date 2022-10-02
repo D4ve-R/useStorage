@@ -3,6 +3,5 @@
    "rules": {
     "array-type": [true, "generic"],
     "no-console": false,
-    "no-unsafe-finally": false
     }
 }

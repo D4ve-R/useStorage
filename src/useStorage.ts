@@ -1,8 +1,8 @@
-interface StoreObject {
+export interface StoreObject {
     [key: string]: string | number | boolean | StoreObject | StoreArray;
 }
 
-interface StoreArray {
+export interface StoreArray {
     [index: number]: string | number | boolean | StoreObject | StoreArray;
 }
 
@@ -25,11 +25,9 @@ export function getItem(key: string) {
     try {
         const val = JSON.parse(value);
         value = val;
-    } catch (error) {
-        // item is not a json string
-    } finally {
-        return value;
-    }
+    } catch (error) {}
+        
+    return value;
 }
 
 /**
@@ -37,6 +35,8 @@ export function getItem(key: string) {
  *
  * @param {string} key - key of the item
  * @param {(string|number|boolean|Array|Object)} value - value to write to localStorage
+ * @throws {TypeError}
+ *
  * @returns {void}
  */
 export function setItem(key: string, value: string | number | boolean | StoreArray | StoreObject) {

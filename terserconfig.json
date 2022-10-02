@@ -1,0 +1,25 @@
+{
+    "parse": {
+    },
+    "compress": {
+        "ecma": 2015
+    },
+    "mangle": {
+
+        "properties": {
+        }
+    },
+    "format": {
+    },
+    "sourceMap": {
+    },
+    "ecma": 2015,
+    "enclose": false,
+    "keep_classnames": false,
+    "keep_fnames": false,
+    "ie8": false,
+    "module": false,
+    "nameCache": null,
+    "safari10": false,
+    "toplevel": false
+}
