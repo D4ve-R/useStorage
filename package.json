@@ -6,7 +6,7 @@
   "types": "build/useStorage.d.ts",
   "scripts": {
     "test": "python -m http.server",
-    "minify": "terser build/useStorage.js --config-file terserconfig.json -o build/useStorage.min.js",
+    "minify": "terser build/useStorage.js -c --config-file terserconfig.json -o build/useStorage.min.js",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
