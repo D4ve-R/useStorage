@@ -2,7 +2,10 @@
     "parse": {
     },
     "compress": {
-        "ecma": 2015
+        "ecma": 2015,
+        "module": false,
+        "collapse_vars": false,
+        "warnings": true
     },
     "mangle": {
 
@@ -18,7 +21,7 @@
     "keep_classnames": false,
     "keep_fnames": false,
     "ie8": false,
-    "module": false,
+    "module": true,
     "nameCache": null,
     "safari10": false,
     "toplevel": false
